@@ -6,3 +6,15 @@
 
 // TODO: 在 STDAFX.H 中引用任何所需的附加头文件，
 //而不是在此文件中引用
+
+bool SetConsoleColor(WORD wAttributes)
+{
+	{
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+		if (hConsole == INVALID_HANDLE_VALUE)
+			return FALSE;
+
+		return SetConsoleTextAttribute(hConsole, wAttributes);
+	}
+}

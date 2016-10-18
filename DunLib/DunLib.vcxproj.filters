@@ -24,9 +24,42 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Dungeon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonRect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonActor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonGenerationAlgorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BSPAlgorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonRect.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonMap.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonActor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BSPAlgorithm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
