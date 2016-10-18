@@ -1,32 +1,33 @@
 #pragma once
-namespace DunLib
+#include <string>
+
+class DungeonRect
 {
-	class DungeonRect
+public:
+	DungeonRect(int x, int y, int w, int h);
+	~DungeonRect();
+
+	inline int getWidth() const
 	{
-	public:
-		DungeonRect(int x, int y, int w, int h);
-		~DungeonRect();
+		return _width;
+	}
 
-		inline int getWidth() const
-		{
-			return _width;
-		}
+	inline int getHeight() const
+	{
+		return _height;
+	}
 
-		inline int getHeight() const
-		{
-			return _height;
-		}
+	DungeonPoint getCenter();
+	DungeonPoint getLeftBottom();
+	std::string debug();
 
-		DungeonPoint getCenter();
+protected:
+	DungeonPoint _leftTop;
+	DungeonPoint _leftBottom;
+	DungeonPoint _rightTop;
+	DungeonPoint _rightBottom;
+	int _width;
+	int _height;
+};
 
-	protected:
-		DungeonPoint _leftTop;
-		DungeonPoint _leftBottom;
-		DungeonPoint _rightTop;
-		DungeonPoint _rightBottom;
-		int _width;
-		int _height;
-	};
-
-	typedef DungeonRect DungeonRoom;
-}
+typedef DungeonRect DungeonRoom;

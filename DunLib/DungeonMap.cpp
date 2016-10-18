@@ -36,6 +36,16 @@ void DungeonMap::setAlgorithm(DungeonGenerationAlgorithm* alg)
 	_algo = alg;
 }
 
+int DungeonMap::getWidth() const
+{
+	return _width;
+}
+
+int DungeonMap::getHeight() const
+{
+	return _height;
+}
+
 void DungeonMap::debug()
 {
 #ifdef WIN32
