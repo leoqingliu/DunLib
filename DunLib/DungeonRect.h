@@ -29,5 +29,3 @@ protected:
 	int _width;
 	int _height;
 };
-
-typedef DungeonRect DungeonRoom;

@@ -28,6 +28,6 @@ bool SetConsoleColor(WORD wAttributes);
 
 #endif // WIN32
 
-static const int ROOM_MAX_SIZE = 12;
-static const int ROOM_MIN_SIZE = 6;
+static const int ROOM_MAX_SIZE = 24;
+static const int ROOM_MIN_SIZE = 12;
 
