@@ -84,6 +84,7 @@ void DungeonMap::processData(void * d)
 		DungeonRect *r = root->_data;
 		debugRoom(r);
 		debug();
+		printf("Press enter key to next...");
 		getchar();
 		BSPTreeNode<DungeonRect> *left = root->_left;
 		BSPTreeNode<DungeonRect> *right = root->_right;
