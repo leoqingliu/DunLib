@@ -1,6 +1,9 @@
 #include "stdafx.h"
+#include "DungeonRect.h"
+#include "Dungeon.h"
 #include "DungeonMap.h"
 #include "DungeonGenerationAlgorithm.h"
+#include "BSPAlgorithm.h"
 
 extern bool SetConsoleColor(WORD wAttributes);
 
@@ -70,6 +73,60 @@ void DungeonMap::debug()
 #endif // WIN32
 }
 
+void DungeonMap::processData(void * d)
+{
+	if (!Dungeon::g_dungeon || !d)
+		return;
+
+	if (Dungeon::g_dungeon->_algorithm == DungeonAlgorithm::BSP)
+	{
+		BSPTreeNode<DungeonRect> *root = static_cast<BSPTreeNode<DungeonRect> *>(d);
+		DungeonRect *r = root->_data;
+		debugRoom(r);
+		debug();
+		getchar();
+		BSPTreeNode<DungeonRect> *left = root->_left;
+		BSPTreeNode<DungeonRect> *right = root->_right;
+
+		if (left)
+			processData(left);
+
+		if (right)
+			processData(right);
+	}
+}
+
+void DungeonMap::debugRoom(DungeonRect * r)
+{
+	DungeonPoint lb = r->getLeftBottom();
+	int width = r->getWidth();
+	int height = r->getHeight();
+
+	// bottom wall
+	for (int x = lb.x; x < lb.x + width; x++)
+	{
+		setWall(x, lb.y);
+	}
+
+	// top wall
+	for (int x = lb.x; x < lb.x + width; x++)
+	{
+		setWall(x, lb.y + height - 1);
+	}
+
+	// left wall
+	for (int y = lb.y; y < lb.y + height; y++)
+	{
+		setWall(lb.x, y);
+	}
+
+	// right wall
+	for (int y = lb.y; y < lb.y + height; y++)
+	{
+		setWall(lb.x + width - 1, y);
+	}
+}
+
 void DungeonMap::performAlgorithm()
 {
 	_algo->generateRooms(this);
@@ -118,7 +175,7 @@ void DungeonMap::createRoom(bool first, int startX, int startY, int endX, int en
 void DungeonMap::drawWall()
 {
 	SetConsoleColor(FOREGROUND_INTENSITY | FOREGROUND_GREEN);
-	printf("W");
+	printf("#");
 }
 
 void DungeonMap::drawGround()

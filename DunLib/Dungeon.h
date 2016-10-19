@@ -2,23 +2,23 @@
 #include "DungeonMap.h"
 #include "DungeonActor.h"
 
+enum DungeonAlgorithm
+{
+	EASY,
+	BSP,
+};
 
-	enum DungeonAlgorithm
-	{
-		EASY,
-		BSP,
-	};
+class Dungeon
+{
+public:
+	Dungeon(DungeonAlgorithm algo);
+	~Dungeon();
+	static Dungeon *g_dungeon;
+	void generate(int x, int y);
+	DungeonAlgorithm _algorithm;
 
-	class Dungeon
-	{
-	public:
-		Dungeon(DungeonAlgorithm algo);
-		~Dungeon();
-		static Dungeon *g_dungeon;
-		void generate(int x, int y);
+protected:
+	
+	DungeonMap *_map;
 
-	protected:
-		DungeonAlgorithm _algorithm;
-		DungeonMap *_map;
-
-	};
+};

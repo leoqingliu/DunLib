@@ -24,17 +24,19 @@ public:
 	~BSPAlgorithm();
 
 	void generateRooms(DungeonMap* _map);
-
+	
 protected:
 	template<typename T>
 	void clearAllNodes(BSPTreeNode<T> *root);
 };
 
 template<typename T>
-inline void BSPAlgorithm::clearAllNodes(BSPTreeNode<T>* root)
+inline void BSPAlgorithm::clearAllNodes(BSPTreeNode<T> *r)
 {
-	if (!root)
+	if (!r)
 		return;
+
+	BSPTreeNode<T> *root = static_cast<BSPTreeNode<T> *>(r);
 
 	auto left = root->_left;
 	auto right = root->_right;

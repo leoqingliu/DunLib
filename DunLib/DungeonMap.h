@@ -1,8 +1,9 @@
 #pragma once
 
 class DungeonGenerationAlgorithm;
-
+class BSPAlorithm;
 class DungeonTile;
+class DungeonRect;
 
 class DungeonMap
 {
@@ -19,13 +20,15 @@ public:
 
 	void debug();
 	DungeonMap(DungeonMap &) = delete;
+	void processData(void *d);
+	void debugRoom(DungeonRect *r);
 
 protected:
 	int _width;
 	int _height;
 	DungeonTile *_tiles;
 	DungeonGenerationAlgorithm *_algo;
-
+	
 	void performAlgorithm();
 
 	// 挖一个房间
@@ -33,6 +36,8 @@ protected:
 
 	// 创建一个房间
 	void createRoom(bool first, int startX, int startY, int endX, int endY);
+
+	// 
 
 #ifdef WIN32
 	void drawWall();

@@ -129,5 +129,6 @@ void BSPAlgorithm::generateRooms(DungeonMap * map)
 //		getchar();
 	}
 
+	map->processData(root);
 	clearAllNodes(root);
 }
